@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HeroDetailComponent } from './hero-detail.component';
+import { ExerciseDetailComponent } from './exercise-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 
-describe('HeroDetailComponent', () => {
-  let component: HeroDetailComponent;
-  let fixture: ComponentFixture<HeroDetailComponent>;
+describe('ExerciseDetailComponent', () => {
+  let component: ExerciseDetailComponent;
+  let fixture: ComponentFixture<ExerciseDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,13 +15,13 @@ describe('HeroDetailComponent', () => {
         HttpClientTestingModule,
         FormsModule
       ],
-      declarations: [ HeroDetailComponent ]
+      declarations: [ ExerciseDetailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeroDetailComponent);
+    fixture = TestBed.createComponent(ExerciseDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

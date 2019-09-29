@@ -3,7 +3,7 @@ import { DashboardComponent } from './dashboard.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
-import { HeroSearchComponent } from '../hero-search/hero-search.component';
+import { ExerciseSearchComponent } from '../exercise-search/exercise-search.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -18,7 +18,7 @@ describe('DashboardComponent', () => {
       ],
       declarations: [ 
         DashboardComponent,
-        HeroSearchComponent
+        ExerciseSearchComponent
       ]
     })
     .compileComponents();
