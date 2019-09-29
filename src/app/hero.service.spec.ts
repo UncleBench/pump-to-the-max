@@ -1,5 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
 import { HeroService } from './hero.service';
 import { TestBed } from '@angular/core/testing';
 import { MessageService } from './message.service';
@@ -7,34 +7,24 @@ import { Hero } from './hero';
 
 describe('HeroService', () => {
   let httpClient: HttpClient;
+  let messageService: MessageService;
   let httpTestingController: HttpTestingController;
   let heroService: HeroService;
-
+  
   beforeEach(() => {
     TestBed.configureTestingModule({
-        imports: [HttpClientTestingModule],
+        imports: [
+          HttpClientTestingModule
+        ],
         providers: [
           HeroService,
-          // HttpErrorHandler,
           MessageService
         ]
     });
+    httpTestingController = TestBed.get(HttpTestingController);
+    httpClient = TestBed.get(HttpClient);
+    heroService = TestBed.get(HeroService);
   });
-
-  //// This does not work for some reason...
-  // beforeEach(() => {
-  //   httpClient = TestBed.get(HttpClient);
-  //   httpTestingController = TestBed.get(HttpTestingController);
-  //   heroService = TestBed.get(HeroService); 
-  // });
-
-  // Inject the http, test controller, and service-under-test
-  // as they will be referenced by each test.
-  // This will throw:
-  // Error: Cannot call Promise.then from within a sync test.
-  httpClient = TestBed.get(HttpClient);
-  httpTestingController = TestBed.get(HttpTestingController);
-  heroService = TestBed.get(HeroService);
 
   afterEach(() => {
     // After every test, assert that there are no more pending requests.
