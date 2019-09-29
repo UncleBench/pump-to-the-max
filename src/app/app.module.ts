@@ -12,6 +12,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { ExerciseSearchComponent } from './exercise-search/exercise-search.component';
 import { ContactComponent } from './contact/contact.component';
+import { WorkoutsComponent } from './workouts/workouts.component';
+import { WorkoutDetailComponent } from './workout-detail/workout-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ContactComponent } from './contact/contact.component';
     MessagesComponent,
     DashboardComponent,
     ExerciseSearchComponent,
-    ContactComponent
+    ContactComponent,
+    WorkoutsComponent,
+    WorkoutDetailComponent
   ],
   imports: [
     ReactiveFormsModule,

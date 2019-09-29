@@ -1,10 +1,10 @@
-/* ExercisesComponent's private CSS styles */
-.exercises {
+/* WorkoutsComponent's private CSS styles */
+
+.workouts {
 	margin: 0 0 2em 0;
 	list-style-type: none;
 	padding: 0;
 	li {
-	  position: relative;
 	  cursor: pointer;
 	  background-color: #EEE;
 	  margin: .5em;
@@ -20,7 +20,7 @@
 	a {
 	  color: #333;
 	  text-decoration: none;
-	  position: relative;
+	  display: inline-block;
 	  &:hover {
 		color: #607D8B;
 	  }

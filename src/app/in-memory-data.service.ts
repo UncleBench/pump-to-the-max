@@ -28,39 +28,39 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 26, name: 'Shoulder press' },
       { id: 27, name: 'Lateral raise' },
       { id: 28, name: 'Tricep extension' },
-    ];
+    ] as Exercise[];
 
     const workouts = [
       { id: 11, name: 'Leg day', exerciseUnits: [ 
-        { exerciseId: 12, sets: 5, reps: 5, weight: 80 },
-        { exerciseId: 15, sets: 4, reps: 8, weight: 60 },
-        { exerciseId: 18, sets: 3, reps: 12, weight: 35 },
-        { exerciseId: 19, sets: 3, reps: 12, weight: 35 },
+        { exercise: exercises[12], sets: 5, reps: 5, weight: 80 },
+        { exercise: exercises[15], sets: 4, reps: 8, weight: 60 },
+        { exercise: exercises[18], sets: 3, reps: 12, weight: 35 },
+        { exercise: exercises[19], sets: 3, reps: 12, weight: 35 },
       ]},
       { id: 12, name: 'Push day', exerciseUnits: [
-        { exerciseId: 11, sets: 5, reps: 5, weight: 65 },
-        { exerciseId: 25, sets: 3, reps: 10, weight: 40 },
-        { exerciseId: 14, sets: 3, reps: 6, weight: 0 },
-        { exerciseId: 28, sets: 3, reps: 15, weight: 35 },        
-        { exerciseId: 21, sets: 3, reps: 5, weight: 50 },
+        { exercise: exercises[11], sets: 5, reps: 5, weight: 65 },
+        { exercise: exercises[25], sets: 3, reps: 10, weight: 40 },
+        { exercise: exercises[14], sets: 3, reps: 6, weight: 0 },
+        { exercise: exercises[28], sets: 3, reps: 15, weight: 35 },        
+        { exercise: exercises[21], sets: 3, reps: 5, weight: 50 },
       ]},
       { id: 13, name: 'Pull day', exerciseUnits: [
-        { exerciseId: 22, sets: 3, reps: 12, weight: 35 },
-        { exerciseId: 24, sets: 4, reps: 10, weight: 40 },
-        { exerciseId: 23, sets: 3, reps: 8, weight: 0 },
+        { exercise: exercises[22], sets: 3, reps: 12, weight: 35 },
+        { exercise: exercises[24], sets: 4, reps: 10, weight: 40 },
+        { exercise: exercises[23], sets: 3, reps: 8, weight: 0 },
       ]},
       { id: 14, name: 'Rest day', exerciseUnits: []},
-    ];
+    ] as Workout[];
 
     return { exercises, workouts };
   }
 
-  // Overrides the genId method to ensure that an exercise always has an id.
-  // If the exercises array is empty,
+  // Overrides the genId method to ensure that an entity always has an id.
+  // If one of the returned arrays is empty,
   // the method below returns the initial number (11).
-  // if the exercises array is not empty, the method below returns the highest
-  // exercise id + 1.
-  genId(exercises: Exercise[]): number {
-    return exercises.length > 0 ? Math.max(...exercises.map(exercise => exercise.id)) + 1 : 11;
+  // if the array is not empty, the method below returns the highest
+  // entity's id + 1.
+  genId(entities: any[]): number {
+    return entities.length > 0 ? Math.max(...entities.map(entity => entity.id)) + 1 : 11;
   }
 }

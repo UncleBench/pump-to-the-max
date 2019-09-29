@@ -1,7 +1,7 @@
 import { Exercise } from './exercise';
 
 export class ExerciseUnit {
-    exerciseId: number;
+    exercise: Exercise;
     sets: number;
     reps: number;
     weight: number;

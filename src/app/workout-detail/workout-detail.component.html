@@ -1,0 +1,25 @@
+<div *ngIf="workout">
+    <h2>{{workout.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{workout.id}}</div>
+    <div>
+        <label>name:
+            <input [(ngModel)]="workout.name" placeholder="name"/>
+        </label>
+    </div>
+
+    <ul class="exercises">
+        <li *ngFor="let exerciseUnit of workout.exerciseUnits">
+            <span>
+            <span class="badge">{{exerciseUnit.exerciseId}}</span>
+            <label>Weight:
+                <input [(ngModel)]="exerciseUnit.weight" placeholder="weight"/>
+            </label>
+            <button class="delete" title="delete exercise"
+                (click)="delete(exercise)">x</button>
+            </span>
+        </li>
+      </ul>
+
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+</div>
