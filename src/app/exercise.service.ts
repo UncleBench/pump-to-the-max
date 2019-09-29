@@ -37,8 +37,7 @@ export class ExerciseService {
 
   /** GET exercises from the server */
   getExercises(): Observable<Exercise[]> {
-    // TODO: send the message _after_ fetching the exercises
-    this.messageService.add('ExerciseService: fetched exercises');
+    this.messageService.add('ExerciseService: fetching exercises...');
     return this.http.get<Exercise[]>(this.exercisesUrl)
       .pipe(
         tap(_ => this.log('fetched exercises')),
