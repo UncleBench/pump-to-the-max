@@ -1,5 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Exercise } from './exercise';
+import { ExerciseUnit } from './exercise-unit'
+import { Workout } from './workout';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -27,7 +29,30 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 27, name: 'Lateral raise' },
       { id: 28, name: 'Tricep extension' },
     ];
-    return { exercises };
+
+    const workouts = [
+      { id: 11, name: 'Leg day', exerciseUnits: [ 
+        { exerciseId: 12, sets: 5, reps: 5, weight: 80 },
+        { exerciseId: 15, sets: 4, reps: 8, weight: 60 },
+        { exerciseId: 18, sets: 3, reps: 12, weight: 35 },
+        { exerciseId: 19, sets: 3, reps: 12, weight: 35 },
+      ]},
+      { id: 12, name: 'Push day', exerciseUnits: [
+        { exerciseId: 11, sets: 5, reps: 5, weight: 65 },
+        { exerciseId: 25, sets: 3, reps: 10, weight: 40 },
+        { exerciseId: 14, sets: 3, reps: 6, weight: 0 },
+        { exerciseId: 28, sets: 3, reps: 15, weight: 35 },        
+        { exerciseId: 21, sets: 3, reps: 5, weight: 50 },
+      ]},
+      { id: 13, name: 'Pull day', exerciseUnits: [
+        { exerciseId: 22, sets: 3, reps: 12, weight: 35 },
+        { exerciseId: 24, sets: 4, reps: 10, weight: 40 },
+        { exerciseId: 23, sets: 3, reps: 8, weight: 0 },
+      ]},
+      { id: 14, name: 'Rest day', exerciseUnits: []},
+    ];
+
+    return { exercises, workouts };
   }
 
   // Overrides the genId method to ensure that an exercise always has an id.
