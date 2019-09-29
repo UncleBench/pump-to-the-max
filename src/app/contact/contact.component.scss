@@ -1,8 +1,74 @@
-@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+// @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 .ng-valid[required], .ng-valid.required  {
-    border-left: 5px solid #42A948; /* green */
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group[_ngcontent-xmy-c2] {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-control[_ngcontent-ild-c2] {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
   }
-  
-  .ng-invalid:not(form)  {
-    border-left: 5px solid #a94442; /* red */
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
   }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}

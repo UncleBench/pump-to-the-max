@@ -3,36 +3,36 @@
 h1 {
 	font-size: 1.2em;
 	margin-bottom: 0;
-  }
+}
   
-  h2 {
+h2 {
 	font-size: 2em;
 	margin-top: 0;
 	padding-top: 0;
-  }
+}
   
-  nav a {
+nav a {
+	margin: 10px 1px 0px 1px;
 	padding: 5px 10px;
 	text-decoration: none;
-	margin-top: 10px;
 	display: inline-block;
 	background-color: #eee;
 	border-radius: 4px;
 	&:visited {
 	  color: #334953;
 	}
-  }
+}
   
-  a:link {
+a:link {
 	color: #334953;
-  }
+}
   
-  nav a {
+nav a {
 	&:hover {
-	  color: #039be5;
-	  background-color: #cfd8dc;
+		color: #039be5;
+		background-color: #cfd8dc;
 	}
 	&.active {
-	  color: #039be5;
+		color: #039be5;
 	}
-  }
+}
