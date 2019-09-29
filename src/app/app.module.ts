@@ -36,10 +36,6 @@ import { ContactComponent } from './contact/contact.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  exports:[
-    FormsModule,
-    ReactiveFormsModule 
-  ],
   providers: [],
   bootstrap: [AppComponent]
 })
