@@ -48,6 +48,10 @@ export class WorkoutDetailComponent implements OnInit {
       .subscribe(availableExercises => this.availableExercises = availableExercises)
   }
 
+  delete(exerciseUnit: ExerciseUnit): void {
+    this.workout.exerciseUnits = this.workout.exerciseUnits.filter(h => h !== exerciseUnit);
+  }
+
   save(): void {
     this.workoutService.updateWorkout(this.workout)
       .subscribe(() => this.goBack());
