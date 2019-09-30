@@ -3,7 +3,6 @@ import { Workout } from '../workout';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { WorkoutService }  from '../workout.service';
-import { NgSelectOption } from '@angular/forms';
 import { ExerciseService } from '../exercise.service';
 import { Exercise } from '../exercise';
 import { ExerciseUnit } from '../exercise-unit';

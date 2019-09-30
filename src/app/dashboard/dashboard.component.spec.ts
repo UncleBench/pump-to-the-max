@@ -16,10 +16,7 @@ describe('DashboardComponent', () => {
         HttpClientTestingModule,
         FormsModule
       ],
-      declarations: [ 
-        DashboardComponent,
-        ExerciseSearchComponent
-      ]
+      declarations: [DashboardComponent]
     })
     .compileComponents();
   }));

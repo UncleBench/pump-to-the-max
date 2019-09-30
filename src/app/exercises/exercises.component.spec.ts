@@ -3,6 +3,7 @@ import { ExercisesComponent } from './exercises.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { ExerciseSearchComponent } from '../exercise-search/exercise-search.component';
 
 describe('ExercisesComponent', () => {
   let component: ExercisesComponent;
@@ -15,7 +16,9 @@ describe('ExercisesComponent', () => {
         HttpClientTestingModule,
         FormsModule
       ],
-      declarations: [ ExercisesComponent ]
+      declarations: [ 
+        ExercisesComponent,
+        ExerciseSearchComponent ]
     })
     .compileComponents();
   }));
