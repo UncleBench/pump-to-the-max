@@ -1,10 +1,11 @@
 <h2>Exercise catalogue</h2>
 
+<app-exercise-search></app-exercise-search>
+
 <div>
   <label>Exercise name:
     <input #exerciseName />
   </label>
-  <!-- (click) passes input value to add() and then clears the input -->
   <button (click)="add(exerciseName.value); exerciseName.value=''">
     add
   </button>
@@ -17,5 +18,3 @@
       (click)="delete(exercise)">x</button>
   </li>
 </ul>
-
-<app-exercise-search></app-exercise-search>

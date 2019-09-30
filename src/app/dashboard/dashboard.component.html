@@ -1,12 +1,15 @@
 <h2>Top Workouts</h2>
-<div class="grid grid-pad">
-  <a *ngFor="let workout of workouts" class="col-1-4"
-      routerLink="/workouts/{{workout.id}}">
-    <div class="module exercise">
-      <h4>{{workout.name}}</h4>
-    </div>
-  </a>
+<div class="grid-container">
+  <div class="grid grid-pad">
+    <a *ngFor="let workout of workouts" class="col-1-4"
+        routerLink="/workouts/{{workout.id}}">
+      <div class="module exercise">
+        <h4>{{workout.name}}</h4>
+      </div>
+    </a>
+  </div>
 </div>
+
 <button (click)="toggleShowAll()">
     <div *ngIf="showAll else showAllIsFalse">Show less workouts</div>
     <ng-template #showAllIsFalse><div>Show all workouts</div></ng-template>
