@@ -32,22 +32,22 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const workouts = [
       { id: 11, name: 'Leg day', exerciseUnits: [ 
-        { exercise: exercises[12], sets: 5, reps: 5, weight: 80 },
-        { exercise: exercises[15], sets: 4, reps: 8, weight: 60 },
-        { exercise: exercises[18], sets: 3, reps: 12, weight: 35 },
-        { exercise: exercises[19], sets: 3, reps: 12, weight: 35 },
+        { exerciseId: 12, sets: 5, reps: 5, weight: 80 },
+        { exerciseId: 15, sets: 4, reps: 8, weight: 60 },
+        { exerciseId: 18, sets: 3, reps: 12, weight: 35 },
+        { exerciseId: 19, sets: 3, reps: 12, weight: 35 },
       ]},
       { id: 12, name: 'Push day', exerciseUnits: [
-        { exercise: exercises[11], sets: 5, reps: 5, weight: 65 },
-        { exercise: exercises[25], sets: 3, reps: 10, weight: 40 },
-        { exercise: exercises[14], sets: 3, reps: 6, weight: 0 },
-        { exercise: exercises[28], sets: 3, reps: 15, weight: 35 },        
-        { exercise: exercises[21], sets: 3, reps: 5, weight: 50 },
+        { exerciseId: 11, sets: 5, reps: 5, weight: 65 },
+        { exerciseId: 25, sets: 3, reps: 10, weight: 40 },
+        { exerciseId: 14, sets: 3, reps: 6, weight: 0 },
+        { exerciseId: 28, sets: 3, reps: 15, weight: 35 },        
+        { exerciseId: 21, sets: 3, reps: 5, weight: 50 },
       ]},
       { id: 13, name: 'Pull day', exerciseUnits: [
-        { exercise: exercises[22], sets: 3, reps: 12, weight: 35 },
-        { exercise: exercises[24], sets: 4, reps: 10, weight: 40 },
-        { exercise: exercises[23], sets: 3, reps: 8, weight: 0 },
+        { exerciseId: 22, sets: 3, reps: 12, weight: 35 },
+        { exerciseId: 24, sets: 4, reps: 10, weight: 40 },
+        { exerciseId: 23, sets: 3, reps: 8, weight: 0 },
       ]},
       { id: 14, name: 'Rest day', exerciseUnits: []},
     ] as Workout[];
