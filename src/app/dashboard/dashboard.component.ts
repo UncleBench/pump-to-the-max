@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Exercise } from '../exercise';
-import { ExerciseService } from '../exercise.service';
+import { WorkoutService } from '../workout.service';
+import { Workout } from '../workout';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,17 +9,31 @@ import { ExerciseService } from '../exercise.service';
 })
 export class DashboardComponent implements OnInit {
   
-  exercises: Exercise[] = [];
+  workouts: Workout[] = [];
+  showAll: boolean;
 
-  constructor(private exerciseService: ExerciseService) { }
+  constructor(private workoutService: WorkoutService) { }
 
   ngOnInit() {
-    this.getExercises();
+    this.showAll = false;
+    this.getWorkouts();
   }
 
-  getExercises(): void {
-    this.exerciseService
-      .getExercises()
-      .subscribe(exercises => this.exercises = exercises.slice(1, 5));
+  toggleShowAll(): void {
+    this.showAll = !this.showAll;
+    this.getWorkouts();
+  }
+
+  getWorkouts(): void {
+    if (this.showAll) {
+      this.workoutService
+        .getWorkouts()
+        .subscribe(workouts => this.workouts = workouts);
+    }
+    else {
+      this.workoutService
+        .getWorkouts()
+        .subscribe(workouts => this.workouts = workouts.slice(1, 5));
+    }
   }
 }
