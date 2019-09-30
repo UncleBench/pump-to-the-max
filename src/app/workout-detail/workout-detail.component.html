@@ -9,13 +9,27 @@
 
     <ul class="exercises">
         <li *ngFor="let exerciseUnit of workout.exerciseUnits">
-            <span>
-            <span class="badge">{{exerciseUnit.exerciseId}}</span>
-            <label>Weight:
-                <input [(ngModel)]="exerciseUnit.weight" placeholder="weight"/>
-            </label>
-            <button class="delete" title="delete exercise"
-                (click)="delete(exercise)">x</button>
+            <span *ngIf="exerciseUnit">
+                <span class="badge">{{exerciseUnit.exerciseId}}</span>
+                <label>Exercise:
+                    <select [(ngModel)]="exerciseUnit.exerciseId"
+                        class="form-control">
+                        <option *ngFor="let exercise of availableExercises" [ngValue]="exercise.id">
+                            {{exercise?.name}}
+                        </option>
+                    </select>
+                </label>
+                <label>Sets:
+                    <input [(ngModel)]="exerciseUnit.sets" placeholder="sets"/>
+                </label>
+                <label>Reps:
+                    <input [(ngModel)]="exerciseUnit.reps" placeholder="reps"/>
+                </label>
+                <label>Weight:
+                    <input [(ngModel)]="exerciseUnit.weight" placeholder="weight"/>
+                </label>
+                <button class="delete" title="delete exercise"
+                    (click)="delete(exercise)">x</button>
             </span>
         </li>
       </ul>
