@@ -52,7 +52,6 @@ export class WorkoutDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.workoutService.updateWorkout(this.workout)
-      .subscribe(() => this.goBack());
+    this.workoutService.updateWorkout(this.workout).subscribe();
   }
 }
