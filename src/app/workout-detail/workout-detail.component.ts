@@ -48,7 +48,8 @@ export class WorkoutDetailComponent implements OnInit {
   }
 
   delete(exerciseUnit: ExerciseUnit): void {
-    this.workout.exerciseUnits = this.workout.exerciseUnits.filter(h => h !== exerciseUnit);
+    this.workout.exerciseUnits = this.workout.exerciseUnits
+      .filter(h => h !== exerciseUnit);
   }
 
   save(): void {
