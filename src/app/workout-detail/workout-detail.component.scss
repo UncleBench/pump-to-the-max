@@ -2,9 +2,10 @@
 .exercises{
     margin: 0 0 2em 0;
 	list-style-type: none;
-	padding: 0;
+    padding: 0;
+    display: inline-block;
+
     li {
-        position: relative;
         cursor: pointer;
         background-color: #EEE;
         margin: .5em;
@@ -41,5 +42,8 @@
         text-align: right;
         margin-right: .8em;
         border-radius: 4px 0 0 4px;
+    }
+    .delete {
+        float: right;
     }
 }
