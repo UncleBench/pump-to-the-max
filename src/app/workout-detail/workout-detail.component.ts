@@ -44,7 +44,12 @@ export class WorkoutDetailComponent implements OnInit {
   getExercises(): void {
     this.exerciseService
       .getExercises()
-      .subscribe(availableExercises => this.availableExercises = availableExercises)
+      .subscribe(availableExercises => this.availableExercises = availableExercises);
+  }
+
+  add(): void {
+    this.workout.exerciseUnits
+      .push(new ExerciseUnit());
   }
 
   delete(exerciseUnit: ExerciseUnit): void {
@@ -53,6 +58,8 @@ export class WorkoutDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.workoutService.updateWorkout(this.workout).subscribe();
+    this.workoutService
+      .updateWorkout(this.workout)
+      .subscribe();
   }
 }

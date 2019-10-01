@@ -9,29 +9,30 @@
 
     <ul class="exercises">
         <li *ngFor="let exerciseUnit of workout.exerciseUnits">
-            <span *ngIf="exerciseUnit">
-                <span class="badge">{{exerciseUnit.exerciseId}}</span>
-                <label>Exercise:
-                    <select [(ngModel)]="exerciseUnit.exerciseId"
-                        class="form-control">
-                        <option *ngFor="let exercise of availableExercises" [ngValue]="exercise.id">
-                            {{exercise?.name}}
-                        </option>
-                    </select>
-                </label>
-                <label>Sets:
-                    <input [(ngModel)]="exerciseUnit.sets" placeholder="sets"/>
-                </label>
-                <label>Reps:
-                    <input [(ngModel)]="exerciseUnit.reps" placeholder="reps"/>
-                </label>
-                <label>Weight:
-                    <input [(ngModel)]="exerciseUnit.weight" placeholder="weight"/>
-                </label>
-                <button class="delete" title="delete exercise"
-                    (click)="delete(exerciseUnit)">x</button>
-            </span>
+            <span class="badge">{{exerciseUnit.exerciseId}}&nbsp;</span>
+            <label>Exercise:
+                <select [(ngModel)]="exerciseUnit.exerciseId"
+                    class="form-control">
+                    <option *ngFor="let exercise of availableExercises" [ngValue]="exercise.id">
+                        {{exercise?.name}}
+                    </option>
+                </select>
+            </label>
+            <label>Sets:
+                <input [(ngModel)]="exerciseUnit.sets" placeholder="sets"/>
+            </label>
+            <label>Reps:
+                <input [(ngModel)]="exerciseUnit.reps" placeholder="reps"/>
+            </label>
+            <label>Weight:
+                <input [(ngModel)]="exerciseUnit.weight" placeholder="weight"/>
+            </label>
+            <button class="delete" title="delete exercise"
+                (click)="delete(exerciseUnit)">x</button>
         </li>
+        <button (click)="add()">
+            add an excise
+        </button>
     </ul>
     
     <div class="controls">
