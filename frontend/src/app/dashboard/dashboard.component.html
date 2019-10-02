@@ -2,7 +2,7 @@
 <div class="grid-container">
   <div class="grid grid-pad">
     <a *ngFor="let workout of workouts" class="col-1-4"
-        routerLink="/workouts/{{workout.id}}">
+        routerLink="/workouts/{{workout._id}}">
       <div class="module exercise">
         <h4>{{workout.name}}</h4>
       </div>

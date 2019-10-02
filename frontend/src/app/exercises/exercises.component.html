@@ -13,7 +13,7 @@
 
 <ul class="exercises">
   <li *ngFor="let exercise of exercises">
-    <a routerLink="/exercises/{{exercise.id}}"><span class="badge">{{exercise.id}}</span>{{exercise.name}}</a>
+    <a routerLink="/exercises/{{exercise._id}}"><span class="badge">{{exercise._id}}</span>{{exercise.name}}</a>
     <button class="delete" title="delete exercise"
       (click)="delete(exercise)">x</button>
   </li>

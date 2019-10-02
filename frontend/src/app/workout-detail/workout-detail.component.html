@@ -1,6 +1,6 @@
 <div *ngIf="workout">
     <h2>{{workout.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{workout.id}}</div>
+    <div><span>id: </span>{{workout._id}}</div>
     <div>
         <label>name:
             <input [(ngModel)]="workout.name" placeholder="name"/>
@@ -9,11 +9,11 @@
 
     <ul class="exercises">
         <li *ngFor="let exerciseUnit of workout.exerciseUnits">
-            <span class="badge">{{exerciseUnit.exerciseId}}&nbsp;</span>
+            <span class="badge">{{exerciseUnit._exerciseId}}&nbsp;</span>
             <label>Exercise:
-                <select [(ngModel)]="exerciseUnit.exerciseId"
+                <select [(ngModel)]="exerciseUnit._exerciseId"
                     class="form-control">
-                    <option *ngFor="let exercise of availableExercises" [ngValue]="exercise.id">
+                    <option *ngFor="let exercise of availableExercises" [ngValue]="exercise._id">
                         {{exercise?.name}}
                     </option>
                 </select>
