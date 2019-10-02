@@ -11,26 +11,24 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class ExerciseService {
   
-  public exercisesUrl = 'api/exercises';  // URL to web api
+  public exercisesUrl = 'http://localhost:4000/exercises';  // URL to web api
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   /** POST: add a new exercise to the server */
   addExercise (exercise: Exercise): Observable<Exercise> {
-    return this.http.post<Exercise>(this.exercisesUrl, exercise, this.httpOptions).pipe(
-      tap((newExercise: Exercise) => this.log(`added exercise w/ id=${newExercise.id}`)),
+    return this.http.post<Exercise>(this.exercisesUrl, JSON.stringify(exercise), this.httpOptions).pipe(
+      tap((newExercise: Exercise) => this.log(`added exercise w/ id=${newExercise._id}`)),
       catchError(this.handleError<Exercise>('addExercise'))
     );
   }
 
   /** DELETE: delete the exercise from the server */
-  deleteExercise (exercise: Exercise | number): Observable<Exercise> {
-    const id = typeof exercise === 'number' ? exercise : exercise.id;
-    const url = `${this.exercisesUrl}/${id}`;
-
+  deleteExercise (exercise: Exercise): Observable<Exercise> {
+    const url = `${this.exercisesUrl}/${exercise._id}`;
     return this.http.delete<Exercise>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted exercise id=${id}`)),
+      tap(_ => this.log(`deleted exercise id=${exercise._id}`)),
       catchError(this.handleError<Exercise>('deleteExercise'))
     );
   }
@@ -46,7 +44,7 @@ export class ExerciseService {
   }
 
   /** GET exercise by id. Will 404 if id not found */
-  getExercise(id: number): Observable<Exercise> {
+  getExercise(id: string): Observable<Exercise> {
     const url = `${this.exercisesUrl}/${id}`;
     return this.http.get<Exercise>(url).pipe(
       tap(_ => this.log(`fetched exercise id=${id}`)),
@@ -56,8 +54,9 @@ export class ExerciseService {
   
   /** PUT: update the exercise on the server */
   updateExercise (exercise: Exercise): Observable<any> {
-    return this.http.put(this.exercisesUrl, exercise, this.httpOptions).pipe(
-      tap(_ => this.log(`updated exercise id=${exercise.id}`)),
+    const url = `${this.exercisesUrl}/${exercise._id}`;
+    return this.http.put(url, JSON.stringify(exercise), this.httpOptions).pipe(
+      tap(_ => this.log(`updated exercise id=${exercise._id}`)),
       catchError(this.handleError<any>('updateExercise'))
     );
   }

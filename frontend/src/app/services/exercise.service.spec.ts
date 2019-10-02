@@ -6,9 +6,9 @@ import { MessageService } from './message.service';
 import { Exercise } from '../models/exercise';
 
 const mockData = [
-  { id: 1, name: 'A' },
-  { id: 2, name: 'B' },
-  { id: 3, name: 'C' }
+  { _id: '123qweasd1', name: 'A' },
+  { _id: '123qweasd2', name: 'B' },
+  { _id: '123qweasd3', name: 'C' }
 ] as Exercise[];
 
 describe('ExerciseService', () => {
@@ -17,7 +17,7 @@ describe('ExerciseService', () => {
   let exerciseService: ExerciseService;
   let mockExercises: Exercise[];
   let mockExercise: Exercise;
-  let mockId: number;
+  let mockId: string;
   
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,7 +34,7 @@ describe('ExerciseService', () => {
 
     mockExercises = [...mockData];
     mockExercise = mockExercises[0];
-    mockId = mockExercise.id;
+    mockId = mockExercise._id;
     exerciseService = TestBed.get(ExerciseService);
   });
 
@@ -130,26 +130,26 @@ describe('ExerciseService', () => {
       let handleErrorSpy = spyOn<any>(exerciseService, 'handleError').and.callThrough();
       let logSpy = spyOn<any>(exerciseService, 'log').and.callThrough();
 
-      exerciseService.getExercise(mockExercise.id).subscribe(
+      exerciseService.getExercise(mockExercise._id).subscribe(
         response => expect(response).toEqual(mockExercise),
         fail
       );
       // Receive GET request
-      const req = httpTestingController.expectOne(`${exerciseService.exercisesUrl}/${mockExercise.id}`);
+      const req = httpTestingController.expectOne(`${exerciseService.exercisesUrl}/${mockExercise._id}`);
       expect(req.request.method).toEqual('GET');
       // Respond with the mock exercises
       req.flush(mockExercise);
       
       expect(handleErrorSpy).toHaveBeenCalledTimes(1);
       expect(logSpy).toHaveBeenCalledTimes(1);
-      expect(handleErrorSpy).toHaveBeenCalledWith(`getExercise id=${mockExercise.id}`);
+      expect(handleErrorSpy).toHaveBeenCalledWith(`getExercise id=${mockExercise._id}`);
     });
 
     it('should fail gracefully on error', () => {
       let handleErrorSpy = spyOn<any>(exerciseService, 'handleError').and.callThrough();
       let logSpy = spyOn<any>(exerciseService, 'log').and.callThrough();
 
-      exerciseService.getExercise(666).subscribe(
+      exerciseService.getExercise('666').subscribe(
         response => expect(response).toBeUndefined(),
         fail
       );

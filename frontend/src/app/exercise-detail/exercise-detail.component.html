@@ -1,6 +1,5 @@
 <div *ngIf="exercise">
     <h2>{{exercise.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{exercise.id}}</div>
     <div>
         <label>name:
             <input [(ngModel)]="exercise.name" placeholder="name"/>

@@ -6,9 +6,9 @@ import { MessageService } from './message.service';
 import { Workout } from '../models/workout';
 
 const mockData = [
-  { id: 1, name: 'A' },
-  { id: 2, name: 'B' },
-  { id: 3, name: 'C' }
+  { _id: '123qweasd1', name: 'A' },
+  { _id: '123qweasd2', name: 'B' },
+  { _id: '123qweasd3', name: 'C' }
 ] as Workout[];
 
 describe('WorkoutService', () => {
@@ -17,7 +17,7 @@ describe('WorkoutService', () => {
   let workoutService: WorkoutService;
   let mockWorkouts: Workout[];
   let mockWorkout: Workout;
-  let mockId: number;
+  let mockId: string;
   
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,7 +34,7 @@ describe('WorkoutService', () => {
 
     mockWorkouts = [...mockData];
     mockWorkout = mockWorkouts[0];
-    mockId = mockWorkout.id;
+    mockId = mockWorkout._id;
     workoutService = TestBed.get(WorkoutService);
   });
 
@@ -130,26 +130,26 @@ describe('WorkoutService', () => {
       let handleErrorSpy = spyOn<any>(workoutService, 'handleError').and.callThrough();
       let logSpy = spyOn<any>(workoutService, 'log').and.callThrough();
 
-      workoutService.getWorkout(mockWorkout.id).subscribe(
+      workoutService.getWorkout(mockWorkout._id).subscribe(
         response => expect(response).toEqual(mockWorkout),
         fail
       );
       // Receive GET request
-      const req = httpTestingController.expectOne(`${workoutService.workoutsUrl}/${mockWorkout.id}`);
+      const req = httpTestingController.expectOne(`${workoutService.workoutsUrl}/${mockWorkout._id}`);
       expect(req.request.method).toEqual('GET');
       // Respond with the mock workouts
       req.flush(mockWorkout);
       
       expect(handleErrorSpy).toHaveBeenCalledTimes(1);
       expect(logSpy).toHaveBeenCalledTimes(1);
-      expect(handleErrorSpy).toHaveBeenCalledWith(`getWorkout id=${mockWorkout.id}`);
+      expect(handleErrorSpy).toHaveBeenCalledWith(`getWorkout id=${mockWorkout._id}`);
     });
 
     it('should fail gracefully on error', () => {
       let handleErrorSpy = spyOn<any>(workoutService, 'handleError').and.callThrough();
       let logSpy = spyOn<any>(workoutService, 'log').and.callThrough();
 
-      workoutService.getWorkout(666).subscribe(
+      workoutService.getWorkout('666').subscribe(
         response => expect(response).toBeUndefined(),
         fail
       );

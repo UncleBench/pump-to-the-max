@@ -10,26 +10,24 @@ import { Workout } from '../models/workout';
   providedIn: 'root'
 })
 export class WorkoutService {
-  public workoutsUrl = 'api/workouts';  // URL to web api
+  public workoutsUrl = 'http://localhost:4000/workouts';  // URL to web api
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   /** POST: add a new workoutUnit to the server */
   addWorkout (workout: Workout): Observable<Workout> {
-    return this.http.post<Workout>(this.workoutsUrl, workout, this.httpOptions).pipe(
-      tap((newWorkout: Workout) => this.log(`added workout w/ id=${newWorkout.id}`)),
+    return this.http.post<Workout>(this.workoutsUrl, JSON.stringify(workout), this.httpOptions).pipe(
+      tap((newWorkout: Workout) => this.log(`added workout w/ id=${newWorkout._id}`)),
       catchError(this.handleError<Workout>('addWorkout'))
     );
   }
 
   /** DELETE: delete the workout from the server */
-  deleteWorkout (workout: Workout | number): Observable<Workout> {
-    const id = typeof workout === 'number' ? workout : workout.id;
-    const url = `${this.workoutsUrl}/${id}`;
-
+  deleteWorkout (workout: Workout): Observable<Workout> {
+    const url = `${this.workoutsUrl}/${workout._id}`;
     return this.http.delete<Workout>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted workout id=${id}`)),
+      tap(_ => this.log(`deleted workout id=${workout._id}`)),
       catchError(this.handleError<Workout>('deleteWorkout'))
     );
   }
@@ -45,7 +43,7 @@ export class WorkoutService {
   }
 
   /** GET workout by id. Will 404 if id not found */
-  getWorkout(id: number): Observable<Workout> {
+  getWorkout(id: string): Observable<Workout> {
     const url = `${this.workoutsUrl}/${id}`;
     return this.http.get<Workout>(url).pipe(
       tap(_ => this.log(`fetched workout id=${id}`)),
@@ -55,9 +53,9 @@ export class WorkoutService {
   
   /** PUT: update the workout on the server */
   updateWorkout (workout: Workout): Observable<any> {
-    return this.http.put(this.workoutsUrl, workout, this.httpOptions).pipe(
-      tap(_ => this.log(`updated workout id=${workout.id}`)),
-      catchError(this.handleError<Workout>(`updateWorkout id=${workout.id}`))
+    return this.http.put(this.workoutsUrl, JSON.stringify(workout), this.httpOptions).pipe(
+      tap(_ => this.log(`updated workout id=${workout._id}`)),
+      catchError(this.handleError<Workout>(`updateWorkout id=${workout._id}`))
     );
   }
 

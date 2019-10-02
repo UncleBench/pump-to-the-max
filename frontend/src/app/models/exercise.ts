@@ -1,4 +1,7 @@
 export class Exercise {
-    id: number;
+    _id: string;
     name: string;
+    constructor(init: Exercise) {
+        Object.assign(this, init);
+    }
 }
