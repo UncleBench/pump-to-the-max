@@ -17,15 +17,10 @@ export class WorkoutDetailComponent implements OnInit {
   @Input() workout: Workout = {
     _id: '',
     name: '',
-    exerciseUnits: [{
-      _exerciseId: '',
-      reps: undefined,
-      sets: undefined,
-      weight: undefined
-    }]
+    exerciseUnits: new Array<ExerciseUnit>()
   };
   
-  availableExercises: Exercise[];
+  availableExercises: Exercise[] = new Array<Exercise>();
 
   constructor(
     private route: ActivatedRoute,
