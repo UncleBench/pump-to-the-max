@@ -8,8 +8,6 @@ const express = require('express'),
 require('dotenv').config();
 console.dir(process.env);
 
-process.env.MONGODB_CONNECTIONSTRING = 'mongodb://localhost:27017/pump-to-the-max';
-
 const app = express();
 app.use(cors());
 app.use(express.json());
