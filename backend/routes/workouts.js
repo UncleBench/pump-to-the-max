@@ -32,11 +32,7 @@ router.get('/:id', function(req, res, next) {
 /* POST/SAVE */
 router.post('/', function(req, res) {
     let workout = req.body;
-    if (!workout.name || 
-            workout.exerciseUnits.length == 0 ||
-            !workout.sets ||
-            !workout.reps ||
-            !workout.weight) {
+    if (!workout.name) {
         res.status(400);
         res.json({
             "error": "Invalid Data"

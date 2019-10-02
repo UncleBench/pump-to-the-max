@@ -15,7 +15,7 @@
     <a routerLink="/workouts/{{workout._id}}">
       <span class="badge">{{workout._id}}</span>
       <span>{{workout.name}}</span>
-      <span>No. of Exercises: {{workout.exerciseUnits.length}}</span>
+      <span>No. of Exercises: {{(workout.exerciseUnits?.length) || "0"}}</span>
     </a>
     <button class="delete" title="delete workout"
       (click)="delete(workout)">x</button>
