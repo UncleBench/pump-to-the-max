@@ -14,7 +14,16 @@ import { ExerciseUnit } from '../models/exercise-unit';
 })
 export class WorkoutDetailComponent implements OnInit {
   
-  @Input() workout: Workout;
+  @Input() workout: Workout = {
+    _id: '',
+    name: '',
+    exerciseUnits: [{
+      _exerciseId: '',
+      reps: undefined,
+      sets: undefined,
+      weight: undefined
+    }]
+  };
   
   availableExercises: Exercise[];
 
