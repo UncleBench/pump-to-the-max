@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { Exercise } from '../exercise';
-import { ExerciseService } from '../exercise.service';
+import { Exercise } from '../models/exercise';
+import { ExerciseService } from '../services/exercise.service';
 
 @Component({
   selector: 'app-exercise-search',

@@ -1,7 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Exercise } from './exercise';
-import { ExerciseUnit } from './exercise-unit'
-import { Workout } from './workout';
+import { Exercise } from '../models/exercise';
+import { ExerciseUnit } from '../models/exercise-unit'
+import { Workout } from '../models/workout';
 import { Injectable } from '@angular/core';
 
 @Injectable({

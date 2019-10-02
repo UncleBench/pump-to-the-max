@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Exercise } from './exercise';
+import { Exercise } from '../models/exercise';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

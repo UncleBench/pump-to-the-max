@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { WorkoutService } from './workout.service';
 import { TestBed } from '@angular/core/testing';
 import { MessageService } from './message.service';
-import { Workout } from './workout';
+import { Workout } from '../models/workout';
 
 const mockData = [
   { id: 1, name: 'A' },
