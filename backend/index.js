@@ -2,7 +2,8 @@ const express = require('express'),
     path = require('path'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
-    exerciseRouter = require('./routes/exercises');
+    exerciseRouter = require('./routes/exercises'),
+    workoutRouter = require('./routes/workouts');
     // indexRouter = require('./routes/index');
 
 require('dotenv').config();
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/exercises', exerciseRouter);
+app.use('/workouts', workoutRouter);
 const port = process.env.PORT || 4000;
 
 const server = app.listen(port, function(){

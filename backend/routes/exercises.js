@@ -5,7 +5,7 @@ const uuid = require('uuid').v1,
   mongojs = require('mongojs'),
   db = mongojs(url, ['exercises']);
 
-/* GET All Exercises */
+/* GET all */
 router.get('/', function(req, res) {
   db.exercises.find(function(err, exercises) {
     if (err) {
@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
   });
 });
 
-/* GET One Hero with the provided ID */
+/* GET by id */
 router.get('/:id', function(req, res, next) {
   db.exercises.findOne({
     _id: mongojs.ObjectId(req.params.id)
@@ -29,10 +29,10 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* POST/SAVE a Hero */
+/* POST/SAVE */
 router.post('/', function(req, res) {
-  var exercise = req.body;
-  if (!exercise.name || !exercise.power) {
+  let exercise = req.body;
+  if (!exercise.name) {
     res.status(400);
     res.json({
       "error": "Invalid Data"
@@ -48,10 +48,10 @@ router.post('/', function(req, res) {
   }
 });
 
-/* PUT/UPDATE a Hero */
+/* PUT/UPDATE */
 router.put('/:id', function(req, res) {
-  var exercise = req.body;
-  var updObj = {};
+  let exercise = req.body;
+  let updObj = {};
   if (exercise.name) {
     updObj.name = exercise.name;
   }
@@ -73,7 +73,7 @@ router.put('/:id', function(req, res) {
   }
 });
 
-/* DELETE a Hero */
+/* DELETE by id */
 router.delete('/:id', function(req, res) {
   db.exercises.remove({_id: mongojs.ObjectId(req.params.id)}, '', function(err, result) {
     if (err) {
@@ -83,43 +83,5 @@ router.delete('/:id', function(req, res) {
     }
   });
 });
-
-// router.get('/', (req, res, next) => {
-//   let repository = new ExerciseRepository();
-
-//   repository.getExercises().then(exercises => res.send(exercises))
-//                            .catch(err => console.log(err));
-// });
-
-// router.post('/', (req, res, next) => {
-//   let repository = new ExerciseRepository();
-//   repository.createExercise().then(id => {
-//                                     res.send({ id: id });
-//                                 })
-//                              .catch(err => { 
-//                                     console.log(err); 
-//                                     res.send(500); 
-//                               });
-// });
-
-// router.get('/:id', (req, res) => {
-//   let repository = new ExerciseRepository();
-//   repository.getExercise(req.params.bookuid).then(result => res.send(result))
-//                                             .catch(res.status(404));
-// });
-
-// router.delete('/:id/notes/:noteuid', (req, res) => {
-//   let bookuid = req.params.bookuid;
-//   let noteuid = req.params.noteuid;
-
-//   let repository = new ExerciseRepository();
-
-//   repository.deleteNote(bookuid, noteuid).then(result => res.sendStatus(200))
-//                                          .catch(() => res.sendStatus(500));
-// });
-
-// function findExercise(bookuid) {
-//   return exercises.find(n => n.id === bookuid);
-// }
 
 module.exports = router;

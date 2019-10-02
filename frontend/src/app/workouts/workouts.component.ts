@@ -9,7 +9,16 @@ import { WorkoutService } from '../services/workout.service';
 })
 export class WorkoutsComponent implements OnInit {
 
-  workouts: Workout[];
+  workouts: Workout[] = [{
+    _id: '',
+    name: '',
+    exerciseUnits: [{
+      _exerciseId: '',
+      reps: undefined,
+      sets: undefined,
+      weight: undefined
+    }]
+  }];
 
   constructor(private workoutService: WorkoutService) { }
 
