@@ -10,7 +10,7 @@ exerciseRouter.use(bodyParser.json());
 /* GET */
 exerciseRouter.get('/', async (request, response) => {
   try {
-    var result = await Exercise.find().exec();
+    let result = await Exercise.find().exec();
     response.send(result);
   } catch (error) {
     response.status(500).send(error);
@@ -31,8 +31,8 @@ exerciseRouter.get('/:id', function(request, response) {
 /* POST */
 exerciseRouter.post('/', async (request, response) => {
   try {
-    var exercise = new Exercise(request.body);
-    var result = await exercise.save();
+    let exercise = new Exercise(request.body);
+    let result = await exercise.save();
     response.send(result);
   } catch (error) {
     response.status(500).send(error);
@@ -42,9 +42,9 @@ exerciseRouter.post('/', async (request, response) => {
 /* PUT */
 exerciseRouter.put("/:id", async (request, response) => {
   try {
-    var exercise = await Exercise.findById(request.params.id).exec();
+    let exercise = await Exercise.findById(request.params.id).exec();
     exercise.set(request.body);
-    var result = await exercise.save();
+    let result = await exercise.save();
     response.send(result);
   } catch (error) {
     response.status(500).send(error);
@@ -54,7 +54,7 @@ exerciseRouter.put("/:id", async (request, response) => {
 /* DELETE by id */
 exerciseRouter.delete("/:id", async (request, response) => {
   try {
-    var result = await Exercise.deleteOne({ _id: request.params.id }).exec();
+    let result = await Exercise.deleteOne({ _id: request.params.id }).exec();
     response.send(result);
   } catch (error) {
     response.status(500).send(error);
