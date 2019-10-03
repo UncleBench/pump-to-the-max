@@ -4,7 +4,7 @@ const express = require('express'),
     cors = require('cors'),
     exerciseRouter = require('./routes/exercises'),
     workoutRouter = require('./routes/workouts');
-    // indexRouter = require('./routes/index');
+    indexRouter = require('./routes/index');
 
 require('dotenv').config();
 console.dir(process.env);
@@ -14,10 +14,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
+app.use('/', indexRouter);
 app.use('/exercises', exerciseRouter);
 app.use('/workouts', workoutRouter);
 const port = process.env.PORT || 4000;

@@ -1,5 +1,4 @@
-const uuid = require('uuid').v1,
-  express = require('express'),
+const express = require('express'),
   router = express.Router(),
   url = 'mongodb://localhost:27017/pump-to-the-max',
   mongojs = require('mongojs'),
