@@ -1,84 +1,64 @@
 const express = require('express'),
-    router = express.Router();
+  workoutRouter = express.Router(),
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose'),
+  Workout = require('../models/workout.js');
 
-    
-/* GET all */
-router.get('/', function(req, res) {
-    db.workouts.find(function(err, workouts) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(workouts);
-        }
-    });
+
+workoutRouter.use(bodyParser.json());
+
+/* GET */
+workoutRouter.get('/', async (request, response) => {
+  try {
+    var result = await Workout.find().exec();
+    response.send(result);
+  } catch (error) {
+    response.status(500).send(error);
+  }
 });
 
 /* GET by id */
-router.get('/:id', function(req, res, next) {
-    db.workouts.findOne({
-        _id: mongojs.ObjectId(req.params.id)
-    }, function(err, workouts) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(workouts);
-        }
-    });
+workoutRouter.get('/:id', function(request, response) {
+  Workout.findById(request.params.id, function(err, Workout) {
+    if (err) {
+      return fails(response, err);
+    } else {
+      response.status(200).json(Workout);
+    }
+  });
 });
 
-/* POST/SAVE */
-router.post('/', function(req, res) {
-    let workout = req.body;
-    if (!workout.name) {
-        res.status(400);
-        res.json({
-            "error": "Invalid Data"
-        });
-    } else {
-        db.workouts.save(workout, function(err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(result);
-            }
-        })
-    }
+/* POST */
+workoutRouter.post('/', async (request, response) => {
+  try {
+    var workout = new Workout(request.body);
+    var result = await workout.save();
+    response.send(result);
+  } catch (error) {
+    response.status(500).send(error);
+  }
 });
 
-/* PUT/UPDATE */
-router.put('/:id', function(req, res) {
-    let workout = req.body;
-    let updObj = {};
-    if (workout.name) {
-        updObj.name = workout.name;
-    }
-    if (!updObj) {
-        res.status(400);
-        res.json({
-            "error": "Invalid Data"
-        });
-    } else {
-        db.workouts.update({
-            _id: mongojs.ObjectId(req.params.id)
-        }, updObj, {}, function(err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(result);
-            }
-        });
-    }
+/* PUT */
+workoutRouter.put("/:id", async (request, response) => {
+  try {
+    var workout = await Workout.findById(request.params.id).exec();
+    workout.set(request.body);
+    var result = await workout.save();
+    response.send(result);
+  } catch (error) {
+    response.status(500).send(error);
+  }
 });
 
 /* DELETE by id */
-router.delete('/:id', function(req, res) {
-    db.workouts.remove({_id: mongojs.ObjectId(req.params.id)}, '', function(err, result) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(result);
-        }
-    });
+workoutRouter.delete("/:id", async (request, response) => {
+  try {
+    var result = await Workout.deleteOne({ _id: request.params.id }).exec();
+    response.send(result);
+  } catch (error) {
+    response.status(500).send(error);
+  }
 });
 
-module.exports = router;
+module.exports = workoutRouter;

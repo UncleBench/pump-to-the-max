@@ -17,14 +17,13 @@ exerciseRouter.get('/', async (request, response) => {
   }
 });
 
-
 /* GET by id */
-exerciseRouter.get('/:id', function(req, res) {
-  Exercise.findById(req.params.id, function(err, Exercise) {
+exerciseRouter.get('/:id', function(request, response) {
+  Exercise.findById(request.params.id, function(err, Exercise) {
     if (err) {
-      return fails(res, err);
+      return fails(response, err);
     } else {
-      res.status(200).json(Exercise);
+      response.status(200).json(Exercise);
     }
   });
 });
