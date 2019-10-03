@@ -3,14 +3,13 @@ import { Exercise } from '../models/exercise';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseService {
-  
   public exercisesUrl = 'http://localhost:4000/exercises';  // URL to web api
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,7 +25,7 @@ export class ExerciseService {
 
   /** DELETE: delete the exercise from the server */
   deleteExercise (exercise: Exercise): Observable<Exercise> {
-    const url = `${this.exercisesUrl}/${exercise._id}`;
+    let url = `${this.exercisesUrl}/${exercise._id}`;
     return this.http.delete<Exercise>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted exercise id=${exercise._id}`)),
       catchError(this.handleError<Exercise>('deleteExercise'))
@@ -45,7 +44,7 @@ export class ExerciseService {
 
   /** GET exercise by id. Will 404 if id not found */
   getExercise(id: string): Observable<Exercise> {
-    const url = `${this.exercisesUrl}/${id}`;
+    let url = `${this.exercisesUrl}/${id}`;
     return this.http.get<Exercise>(url).pipe(
       tap(_ => this.log(`fetched exercise id=${id}`)),
       catchError(this.handleError<Exercise>(`getExercise id=${id}`))
@@ -54,7 +53,7 @@ export class ExerciseService {
   
   /** PUT: update the exercise on the server */
   updateExercise (exercise: Exercise): Observable<any> {
-    const url = `${this.exercisesUrl}/${exercise._id}`;
+    let url = `${this.exercisesUrl}/${exercise._id}`;
     return this.http.put(url, JSON.stringify(exercise), this.httpOptions).pipe(
       tap(_ => this.log(`updated exercise id=${exercise._id}`)),
       catchError(this.handleError<any>('updateExercise'))

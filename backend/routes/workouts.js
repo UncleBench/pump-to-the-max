@@ -30,25 +30,25 @@ workoutRouter.get('/:id', function(request, response) {
 
 /* POST */
 workoutRouter.post('/', async (request, response) => {
-  try {
-    let workout = new Workout(request.body);
-    let result = await workout.save();
-    response.send(result);
-  } catch (error) {
-    response.status(500).send(error);
-  }
+    try {
+        let workout = new Workout(request.body);
+        let result = await workout.save();
+        response.send(result);
+    } catch (error) {
+        response.status(500).send(error);
+    }
 });
 
 /* PUT */
 workoutRouter.put("/:id", async (request, response) => {
-  try {
-    let workout = await Workout.findById(request.params.id).exec();
-    workout.set(request.body);
-    let result = await workout.save();
-    response.send(result);
-  } catch (error) {
-    response.status(500).send(error);
-  }
+    try {
+        let workout = await Workout.findById(request.params.id).exec();
+        workout.set(request.body);
+        let result = await workout.save();
+        response.send(result);
+    } catch (error) {
+        response.status(500).send(error);
+    }
 });
 
 /* DELETE by id */

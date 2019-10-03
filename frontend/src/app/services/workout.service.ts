@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Workout } from '../models/workout';
 
 
@@ -25,7 +25,7 @@ export class WorkoutService {
 
   /** DELETE: delete the workout from the server */
   deleteWorkout (workout: Workout): Observable<Workout> {
-    const url = `${this.workoutsUrl}/${workout._id}`;
+    let url = `${this.workoutsUrl}/${workout._id}`;
     return this.http.delete<Workout>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted workout id=${workout._id}`)),
       catchError(this.handleError<Workout>('deleteWorkout'))
@@ -44,7 +44,7 @@ export class WorkoutService {
 
   /** GET workout by id. Will 404 if id not found */
   getWorkout(id: string): Observable<Workout> {
-    const url = `${this.workoutsUrl}/${id}`;
+    let url = `${this.workoutsUrl}/${id}`;
     return this.http.get<Workout>(url).pipe(
       tap(_ => this.log(`fetched workout id=${id}`)),
       catchError(this.handleError<Workout>(`getWorkout id=${id}`))
@@ -53,7 +53,8 @@ export class WorkoutService {
   
   /** PUT: update the workout on the server */
   updateWorkout (workout: Workout): Observable<any> {
-    return this.http.put(this.workoutsUrl, JSON.stringify(workout), this.httpOptions).pipe(
+    let url = `${this.workoutsUrl}/${workout._id}`;
+    return this.http.put(url, JSON.stringify(workout), this.httpOptions).pipe(
       tap(_ => this.log(`updated workout id=${workout._id}`)),
       catchError(this.handleError<Workout>(`updateWorkout id=${workout._id}`))
     );
