@@ -12,10 +12,12 @@
             <span class="badge">{{exerciseUnit._exerciseId}}&nbsp;</span>
             <label>Exercise:
                 <select [(ngModel)]="exerciseUnit._exerciseId"
-                    class="form-control">
-                    <option *ngFor="let exercise of availableExercises" [ngValue]="exercise._id">
-                        {{exercise?.name}}
-                    </option>
+                    class="form-control"
+                    ng-init="exerciseUnit._exerciseId">
+                    <option *ngFor="let exercise of availableExercises" 
+                        [ngValue]="exercise._id">
+                            {{exercise.name}}
+                    </option> 
                 </select>
             </label>
             <label>Sets:
@@ -30,7 +32,7 @@
             <button class="delete" title="delete exercise"
                 (click)="delete(exerciseUnit)">x</button>
         </li>
-        <button (click)="add()">
+        <button (click)="add()" title="add a new exercise">
             add an excise
         </button>
     </ul>

@@ -35,8 +35,8 @@ export class WorkoutDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getWorkout();
     this.getExercises();
+    this.getWorkout();
   }
 
   goBack(): void {
