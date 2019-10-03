@@ -1,9 +1,7 @@
 const express = require('express'),
-    router = express.Router(),
-    url = 'mongodb://localhost:27017/pump-to-the-max',
-    mongojs = require('mongojs'),
-    db = mongojs(url, ['workouts']);
+    router = express.Router();
 
+    
 /* GET all */
 router.get('/', function(req, res) {
     db.workouts.find(function(err, workouts) {
