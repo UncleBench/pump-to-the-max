@@ -19,9 +19,9 @@ workoutRouter.get('/', async (request, response) => {
 
 /* GET by id */
 workoutRouter.get('/:id', function(request, response) {
-  Workout.findById(request.params.id, function(err, Workout) {
-    if (err) {
-      return fails(response, err);
+  Workout.findById(request.params.id, function(error, Workout) {
+    if (error) {
+      return fails(response, error);
     } else {
       response.status(200).json(Workout);
     }
