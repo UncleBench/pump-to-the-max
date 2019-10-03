@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from '../models/workout';
 import { WorkoutService } from '../services/workout.service';
-import { ExerciseUnit } from '../models/exercise-unit';
 
 @Component({
   selector: 'app-workouts',
@@ -13,7 +12,12 @@ export class WorkoutsComponent implements OnInit {
   workouts: Workout[] = [{
     _id: '',
     name: '',
-    exerciseUnits: new Array<ExerciseUnit>()
+    exerciseUnits: [{
+      _exerciseId: '',
+      reps: undefined,
+      sets: undefined,
+      weight: undefined
+    }]
   }];
 
   constructor(private workoutService: WorkoutService) { }
@@ -31,7 +35,7 @@ export class WorkoutsComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.workoutService.addWorkout({ name } as Workout)
+    this.workoutService.addWorkout(new Workout(name))
       .subscribe(workout => {
         this.workouts.push(workout);
       });

@@ -9,7 +9,7 @@ import { ExerciseService } from '../services/exercise.service';
 })
 export class ExercisesComponent implements OnInit {
   
-  exercises: Exercise[] = [];
+  exercises: Exercise[] = new Array<Exercise>();
 
   constructor(private exerciseService: ExerciseService) { }
 

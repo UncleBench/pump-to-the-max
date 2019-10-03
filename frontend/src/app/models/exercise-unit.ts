@@ -1,6 +1,4 @@
-import { Exercise } from './exercise';
-import { isUndefined } from 'util';
-import * as uuid from 'uuid';
+import { ObjectId } from 'bson';
 
 export class ExerciseUnit {
     _exerciseId: string;
@@ -8,8 +6,8 @@ export class ExerciseUnit {
     reps: number;
     weight: number;
     constructor() {
-        if (isUndefined(this._exerciseId)) {
-            this._exerciseId = uuid.v4();
+        if (this._exerciseId === undefined) {
+            this._exerciseId = new ObjectId() + '';
         }
     }
 }

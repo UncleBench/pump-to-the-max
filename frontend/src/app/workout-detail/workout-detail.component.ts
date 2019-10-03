@@ -17,7 +17,12 @@ export class WorkoutDetailComponent implements OnInit {
   @Input() workout: Workout = {
     _id: '',
     name: '',
-    exerciseUnits: new Array<ExerciseUnit>()
+    exerciseUnits: [{
+      _exerciseId: '',
+      reps: undefined,
+      sets: undefined,
+      weight: undefined
+    }]
   };
   
   availableExercises: Exercise[] = new Array<Exercise>();
