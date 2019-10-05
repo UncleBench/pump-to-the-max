@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 
 let WorkoutSchema = new mongoose.Schema({
     name: {
-        type: String,
-        require: true,
-        unique: true
+        type: String
     },
     exerciseUnits: [{
         sets: Number,
